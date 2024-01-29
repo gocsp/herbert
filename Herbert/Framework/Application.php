@@ -1,8 +1,8 @@
 <?php namespace Herbert\Framework;
 
 use Illuminate\Support\ServiceProvider;
-// use vierbergenlars\SemVer\version as SemVersion;
-// use vierbergenlars\SemVer\expression as SemVersionExpression;
+use vierbergenlars\SemVer\version as SemVersion;
+use vierbergenlars\SemVer\expression as SemVersionExpression;
 use Illuminate\Database\Capsule\Manager as CapsuleManager;
 use Illuminate\Database\Schema\Blueprint as SchemaBlueprint;
 

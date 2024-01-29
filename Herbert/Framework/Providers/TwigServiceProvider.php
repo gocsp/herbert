@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use Twig\Environment;
-use Twig\Loader\Filesystem;
+use Twig\Loader\FilesystemLoader;
 use Twig\Extension\DebugExtension;
 use Twig\TwigFunction;
 

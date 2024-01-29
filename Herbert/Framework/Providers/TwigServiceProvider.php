@@ -1,10 +1,10 @@
 <?php namespace Herbert\Framework\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Twig_Environment;
-use Twig_Loader_Filesystem;
-use Twig_Extension_Debug;
-use Twig_SimpleFunction;
+use Twig\Environment;
+use Twig\Loader\Filesystem;
+use Twig\Extension\DebugExtension;
+use Twig\TwigFunction;
 
 /**
  * @see http://getherbert.com
@@ -20,7 +20,7 @@ class TwigServiceProvider extends ServiceProvider {
     {
         $this->app->singleton('twig.loader', function ()
         {
-            $loader = new Twig_Loader_Filesystem();
+            $loader = new Filesystem();
 
             foreach ($this->app->getPlugins() as $plugin)
             {
@@ -66,7 +66,7 @@ class TwigServiceProvider extends ServiceProvider {
 
         $this->app->alias(
             'twig',
-            'Twig_Environment'
+            'Twig\Environment'
         );
     }
 
@@ -77,11 +77,11 @@ class TwigServiceProvider extends ServiceProvider {
      */
     public function constructTwig()
     {
-        $twig = new Twig_Environment($this->app['twig.loader'], $this->app['twig.options']);
+        $twig = new Environment($this->app['twig.loader'], $this->app['twig.options']);
 
         if ($this->app->environment() === 'local')
         {
-            $twig->addExtension(new Twig_Extension_Debug);
+            $twig->addExtension(new DebugExtension);
         }
 
         foreach ($this->app->getViewGlobals() as $key => $value)
@@ -93,7 +93,7 @@ class TwigServiceProvider extends ServiceProvider {
 
         foreach ((array) $this->app['twig.functions'] as $function)
         {
-            $twig->addFunction(new Twig_SimpleFunction($function, $function));
+            $twig->addFunction(new TwigFunction($function, $function));
         }
 
         return $twig;

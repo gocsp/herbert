@@ -149,12 +149,12 @@ class Application extends \Illuminate\Container\Container implements \Illuminate
         $this->registerCoreContainerAliases();
         $this->registerConfiguredProviders();
     }
-    
+
     public function runningInConsole() { }
     public function runningUnitTests() { }
 
     public function getCachedPackagesPath() { }
-    
+
     /**
      *  Added to satisfy interface
      *
@@ -594,7 +594,7 @@ class Application extends \Illuminate\Container\Container implements \Illuminate
      * @see register_uninstall_hook
      * @param $root
      */
-    public function deletePlugin($root)
+    public function deletePlugin( $root )
     {
         $plugins = array_filter($this->plugins, function (Plugin $plugin) use ($root)
         {

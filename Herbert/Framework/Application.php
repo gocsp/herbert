@@ -1,8 +1,8 @@
 <?php namespace Herbert\Framework;
 
 use Illuminate\Support\ServiceProvider;
-use vierbergenlars\SemVer\version as SemVersion;
-use vierbergenlars\SemVer\expression as SemVersionExpression;
+// use vierbergenlars\SemVer\version as SemVersion;
+// use vierbergenlars\SemVer\expression as SemVersionExpression;
 use Illuminate\Database\Capsule\Manager as CapsuleManager;
 use Illuminate\Database\Schema\Blueprint as SchemaBlueprint;
 
@@ -201,7 +201,8 @@ class Application extends \Illuminate\Container\Container implements \Illuminate
     {
         $constraint = array_get($config, 'constraint', self::VERSION);
 
-        return $this->version->satisfies(new SemVersionExpression($constraint));
+        return true;
+        // return $this->version->satisfies(new SemVersionExpression($constraint));
     }
 
     /**

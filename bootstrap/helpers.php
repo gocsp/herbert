@@ -183,7 +183,7 @@ if ( ! function_exists('view'))
      */
     function view($name, $context = [])
     {
-        return response(herbert('Twig_Environment')->render($name, $context));
+        return response(herbert('Twig\Environment')->render($name, $context));
     }
 }
 
